@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: oauth2-authenticator
+  datasource:
+    url: jdbc:mysql://localhost:3306/authorization_center?characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+mybatis-plus:
+  # 扫码 *Mapper.xml 路径
+  mapper-locations: classpath:/mapper/**.xml
+
