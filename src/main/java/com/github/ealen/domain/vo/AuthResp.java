@@ -3,21 +3,19 @@ package com.github.ealen.domain.vo;
 /**
  * @author EalenXie create on 2021/2/1 10:46
  */
-public class RespBody<T> {
+public class AuthResp {
 
     private int status;
 
     private String message;
 
-    private T data;
 
-    public RespBody(int status, String message, T data) {
+    public AuthResp(int status, String message) {
         this.status = status;
         this.message = message;
-        this.data = data;
     }
 
-    public RespBody() {
+    public AuthResp() {
     }
 
     public int getStatus() {
@@ -34,14 +32,6 @@ public class RespBody<T> {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
     }
 
 }

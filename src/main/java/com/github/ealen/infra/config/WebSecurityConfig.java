@@ -1,7 +1,7 @@
 package com.github.ealen.infra.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.ealen.domain.vo.RespBody;
+import com.github.ealen.domain.vo.AuthResp;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -75,7 +75,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationSuccessHandler authenticationSuccessHandler() {
         return (httpServletRequest, httpServletResponse, authentication) -> {
             httpServletResponse.setContentType(MediaType.APPLICATION_JSON_VALUE);
-            RespBody<Void> resp = new RespBody<>(HttpStatus.OK.value(), "login success", null);
+            AuthResp resp = new AuthResp(HttpStatus.OK.value(), "login success");
             httpServletResponse.getWriter().write(objectMapper.writeValueAsString(resp));
         };
     }
@@ -87,7 +87,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public LogoutSuccessHandler logoutSuccessHandler() {
         return (httpServletRequest, httpServletResponse, authentication) -> {
             httpServletResponse.setContentType(MediaType.APPLICATION_JSON_VALUE);
-            RespBody<Void> resp = new RespBody<>(HttpStatus.OK.value(), "logout success", null);
+            AuthResp resp = new AuthResp(HttpStatus.OK.value(), "logout success");
             httpServletResponse.getWriter().write(objectMapper.writeValueAsString(resp));
         };
     }
@@ -100,7 +100,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return (httpServletRequest, httpServletResponse, e) -> {
             httpServletResponse.setContentType(MediaType.APPLICATION_JSON_VALUE);
             httpServletResponse.setStatus(HttpStatus.UNAUTHORIZED.value());
-            RespBody<Void> resp = new RespBody<>(HttpStatus.UNAUTHORIZED.value(), e.getMessage(), null);
+            AuthResp resp = new AuthResp(HttpStatus.UNAUTHORIZED.value(), e.getMessage());
             httpServletResponse.getWriter().write(objectMapper.writeValueAsString(resp));
         };
     }
