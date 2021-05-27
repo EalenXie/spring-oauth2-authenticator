@@ -47,7 +47,7 @@ Content-Length: 52
 
 grant_type=password&username=ealenxie&password=admin
 ```
-此模式获取令牌接口 `grant_type`固定传值 <font color='red'>password</font>并且携带用户名密码进行认证。
+此模式获取令牌接口 `grant_type`固定传值 <font color='red'>password</font>并且携带用户名密码进行认证。~~~~
 
 
 ### 3. 授权码模式
