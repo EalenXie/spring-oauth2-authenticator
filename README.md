@@ -47,7 +47,7 @@ Content-Length: 52
 
 grant_type=password&username=ealenxie&password=admin
 ```
-此模式获取令牌接口 `grant_type`固定传值 <font color='red'>password</font>并且携带用户名密码进行认证。(本例子中笔者对此模式做了改造，客户端仍然需要进行basic认证，目的是在一个认证授权中心里面，为了确认客户端和用户均有效且能够建立信任关系)
+此模式获取令牌接口 `grant_type`固定传值 <font color='red'>password</font>并且携带用户名密码进行认证。
 
 
 ### 3. 授权码模式
@@ -57,6 +57,7 @@ grant_type=password&username=ealenxie&password=admin
 #### 3.1 用户认证(登录)
 
 请求示例  :
+(本例子中笔者对此模式的第一步登录做了改造，用户登录授权服务器需要也进行basic认证，目的是在一个认证授权中心里面，为了确认客户端和用户均有效且能够建立信任关系)
 
 ![](https://img2020.cnblogs.com/blog/994599/202102/994599-20210203141150447-1796077322.png)
 
