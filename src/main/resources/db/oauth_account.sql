@@ -37,9 +37,3 @@ CREATE TABLE `oauth_account`  (
   INDEX `client_username_index`(`client_id`, `username`) USING BTREE
 ) ENGINE = InnoDB  CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '认证中心 账号表' ROW_FORMAT = Compact;
 
--- ----------------------------
--- Records of oauth_account
--- ----------------------------
-INSERT INTO `oauth_account` VALUES (1, 'ABC', 'ealenxie', '$2a$10$IzjmkjegAMXtycRnGyBZl.ZMwNxoUhCCCn8/lwlLswdMQ6TcvU3P2', '1232378743', 'abc@123.com', 1, 1, 1, 1, 0, '2020-12-07 11:06:02');
-
-
