@@ -32,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private OauthAccountUserDetailsService oauthAccountUserDetailsService;
 
 
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     /**
      * 这些接口 对于认证中心来说无需授权

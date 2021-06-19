@@ -35,7 +35,7 @@ public class OauthAccountUserDetailsService implements UserDetailsService {
     @Resource
     private OauthAccountMapper oauthAccountMapper;
 
-    private BasicAuthenticationConverter authenticationConverter = new BasicAuthenticationConverter();
+    private final BasicAuthenticationConverter authenticationConverter = new BasicAuthenticationConverter();
     @Resource
     private JdbcClientDetailsService jdbcClientDetailsService;
     @Resource
@@ -62,8 +62,8 @@ public class OauthAccountUserDetailsService implements UserDetailsService {
         // 获取用户
         OauthAccount account = oauthAccountMapper.loadUserByUsername(clientId, username);
         // 用户不存在
-        if (account == null) {
-            throw new UsernameNotFoundException("username not found");
+        if (account == null || !account.getAccountNonDeleted()) {
+            throw new UsernameNotFoundException("user not found");
         }
         // 授权
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();

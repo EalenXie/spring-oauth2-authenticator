@@ -7,9 +7,11 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author EalenXie create on 2020/11/24 14:45
+ * 自定义认证中心账号表
  */
 @Data
 @TableName("oauth_account")
@@ -59,28 +61,38 @@ public class OauthAccount implements Serializable {
     private Boolean enabled;
 
     /**
-     * 账号是否未过期
+     * 账号未过期
      */
     @TableField("account_non_expired")
     private Boolean accountNonExpired;
 
     /**
-     * 账号是否被锁定
+     * 账号未锁定
      */
     @TableField("account_non_locked")
     private Boolean accountNonLocked;
 
     /**
-     * 密码是否未过期
+     * 密码未过期
      */
     @TableField("credentials_non_expired")
     private Boolean credentialsNonExpired;
 
     /**
-     * 账号是否删除(逻辑删除)
+     * 账号未删除(逻辑删除)
      */
-    @TableField("deleted")
-    private Boolean deleted;
+    @TableField("account_non_deleted")
+    private Boolean accountNonDeleted;
 
+    /**
+     * 创建时间
+     */
+    @TableField("created_time")
+    private Date createdTime;
+    /**
+     * 更新时间
+     */
+    @TableField("updated_time")
+    private Date updatedTime;
 
 }

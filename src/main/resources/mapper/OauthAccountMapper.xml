@@ -8,7 +8,7 @@
         from oauth_account
         where client_id = #{clientId}
           and username = #{username}
-          and deleted = 0
+          and account_non_deleted = true
         limit 1
     </select>
 
