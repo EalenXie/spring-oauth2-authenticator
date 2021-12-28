@@ -33,17 +33,32 @@ public class OauthClientAccessTokenConfig {
     @Resource
     private DataSource dataSource;
 
-    @Resource
-    private JdbcClientDetailsService jdbcClientDetailsService;
+    /**
+     * 声明 ClientDetails实现
+     *
+     * @return ClientDetailsService
+     */
+    @Bean
+    public JdbcClientDetailsService jdbcClientDetailsService() {
+        return new JdbcClientDetailsService(dataSource);
+    }
 
 
+
+    /**
+     * 配置TokenStore token持久化
+     */
+    @Bean
+    public TokenStore tokenStore() {
+        return new JdbcTokenStore(dataSource);
+    }
     /**
      * tokenService 配置
      */
     @Bean(name = "tokenServices")
     public AuthorizationServerTokenServices tokenServices() {
         DefaultTokenServices tokenServices = new DefaultTokenServices();
-        tokenServices.setClientDetailsService(jdbcClientDetailsService);
+        tokenServices.setClientDetailsService(jdbcClientDetailsService());
         // 允许支持refreshToken
         tokenServices.setSupportRefreshToken(true);
         // refreshToken 不重用策略
@@ -54,13 +69,7 @@ public class OauthClientAccessTokenConfig {
         return tokenServices;
     }
 
-    /**
-     * 配置TokenStore token持久化
-     */
-    @Bean
-    public TokenStore tokenStore() {
-        return new JdbcTokenStore(dataSource);
-    }
+
 
 
     /**

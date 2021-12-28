@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.ealen.domain.vo.AuthResp;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,6 +22,7 @@ import org.springframework.web.cors.CorsUtils;
 
 import javax.annotation.Resource;
 
+
 /**
  * @author EalenXie create on 2020/11/3 13:00
  */
@@ -28,6 +30,7 @@ import javax.annotation.Resource;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Lazy
     @Resource
     private OauthAccountUserDetailsService oauthAccountUserDetailsService;
 

@@ -1,6 +1,5 @@
 package com.github.ealen.infra.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -12,7 +11,6 @@ import org.springframework.security.oauth2.provider.client.JdbcClientDetailsServ
 import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
 
 import javax.annotation.Resource;
-import javax.sql.DataSource;
 
 /**
  * @author EalenXie create on 2020/11/3 11:34
@@ -21,22 +19,13 @@ import javax.sql.DataSource;
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
-    @Resource
-    private DataSource dataSource;
+
     @Resource
     private AuthorizationServerTokenServices tokenServices;
     @Resource
     private AuthenticationManager authenticationManagerBean;
-
-    /**
-     * 声明 ClientDetails实现
-     *
-     * @return ClientDetailsService
-     */
-    @Bean
-    public JdbcClientDetailsService jdbcClientDetailsService() {
-        return new JdbcClientDetailsService(dataSource);
-    }
+    @Resource
+    private JdbcClientDetailsService jdbcClientDetailsService;
 
 
     @Override
@@ -48,7 +37,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.withClientDetails(jdbcClientDetailsService());
+        clients.withClientDetails(jdbcClientDetailsService);
     }
 
     @Override

@@ -17,9 +17,9 @@ public class OauthAccountUserDetails implements UserDetails {
         this.authorities = authorities;
     }
 
-    private OauthAccount oauthAccount;
+    private final OauthAccount oauthAccount;
 
-    private Collection<? extends GrantedAuthority> authorities;
+    private final Collection<? extends GrantedAuthority> authorities;
 
     public OauthAccount getOauthAccount() {
         return oauthAccount;
